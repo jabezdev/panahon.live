@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: panahon-live:latest
-    container_name: panahon-live
-    ports:
-      - "${PANAHON_PORT:-18081}:80"
+    expose:
+      - "80"
     restart: unless-stopped

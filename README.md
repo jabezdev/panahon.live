@@ -45,20 +45,24 @@ Open http://localhost:18081
 docker compose up -d --build
 ```
 
-By default, Compose uses host port `18081`. To choose another port:
+### Dokploy / VPS note
+
+The default [docker-compose.yml](docker-compose.yml) does **not** publish a host port to avoid VPS port conflicts.
+It only exposes container port `80` internally, which is the right setup for Dokploy's proxy/domain routing.
+
+### Local port mapping (optional)
+
+If you want to access it directly from your machine with a host port:
 
 ```bash
-PANAHON_PORT=8090 docker compose up -d --build
+docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
 ```
 
-If you still get "port is already allocated" on a VPS, check what is already binding that port:
+Or choose a different local port:
 
 ```bash
-sudo ss -ltnp | grep ':18081\|:8080\|:8081'
-docker ps --format 'table {{.Names}}\t{{.Ports}}'
+PANAHON_PORT=8090 docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
 ```
-
-Then either stop the conflicting service or pick a free port with `PANAHON_PORT`.
 
 Stop it with:
 

@@ -1,0 +1,4 @@
+services:
+  panahon-live:
+    ports:
+      - "${PANAHON_PORT:-18081}:80"
