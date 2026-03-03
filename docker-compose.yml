@@ -1,0 +1,10 @@
+services:
+  panahon-live:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: panahon-live:latest
+    container_name: panahon-live
+    ports:
+      - "8080:80"
+    restart: unless-stopped
