@@ -34,15 +34,21 @@ docker build -t panahon-live:latest .
 ### Run container
 
 ```bash
-docker run --rm -p 8080:80 --name panahon-live panahon-live:latest
+docker run --rm -p 8081:80 --name panahon-live panahon-live:latest
 ```
 
-Open http://localhost:8080
+Open http://localhost:8081
 
 ## Docker Compose (recommended)
 
 ```bash
 docker compose up -d --build
+```
+
+By default, Compose uses host port `8081`. To choose another port:
+
+```bash
+HOST_PORT=8090 docker compose up -d --build
 ```
 
 Stop it with:

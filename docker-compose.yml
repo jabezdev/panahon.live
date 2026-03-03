@@ -6,5 +6,5 @@ services:
     image: panahon-live:latest
     container_name: panahon-live
     ports:
-      - "8080:80"
+      - "${HOST_PORT:-8081}:80"
     restart: unless-stopped
